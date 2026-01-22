@@ -8,6 +8,10 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -18,6 +22,12 @@ const Nav = styled.nav`
     text-decoration: none;
     color: #111;
     font-size: 14px;
+    position: relative;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -28,12 +38,37 @@ const Button = styled.button`
   padding: 10px 24px;
   border-radius: 8px;
   cursor: pointer;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+`;
+
+const MobileMenu = styled.div`
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 export default function Header() {
   return (
     <Container>
-      <span><Image src="/logo.png" alt="Restaurant Logo" width={198} height={50} /></span>
+      <span>
+        <Image
+          src="/logo.png"
+          alt="Restaurant Logo"
+          width={160}
+          height={40}
+          style={{ width: 'auto', height: 'auto' }}
+        />
+      </span>
+
 
       <Nav>
         <a href="#">Menu</a>
@@ -42,8 +77,8 @@ export default function Header() {
         <a href="#">About</a>
         <a href="#">Contact</a>
       </Nav>
-
       <Button>Book a table</Button>
+      <MobileMenu>☰</MobileMenu>
     </Container>
   );
 }

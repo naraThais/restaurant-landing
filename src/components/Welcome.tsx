@@ -8,38 +8,58 @@ const Section = styled.section`
   padding-bottom: 320px;
   overflow-x: clip;
 
-&::before {
-  content: "";
-  position: absolute;
-  top: -250px;
-  right: -0.5vw;
-  width: 2000px;
-  height: 1000px;
-  background-image: url('/background.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right top;
-  pointer-events: none;
-  z-index: 0;
-}
+  @media (max-width: 1024px) {
+    padding-bottom: 240px;
+  }
 
+  @media (max-width: 768px) {
+    padding-bottom: 160px;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -250px;
+    right: -0.5vw;
+    width: 2000px;
+    height: 1000px;
+    background-image: url('/background.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right top;
+    pointer-events: none;
+    z-index: 0;
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      width: 1400px;
+      height: 700px;
+      top: -180px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 `;
+
 
 
 const Left = styled.div`
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
 
   img {
     width: 100%;
+    max-width: 520px;
     height: auto;
   }
-
-  @media (max-width: 768px) {
-    display: flex;
-    justify-content: center;
-  }
 `;
+
 
 const Right = styled.div`
   position: relative;
@@ -48,79 +68,80 @@ const Right = styled.div`
   h2 {
     font-size: 42px;
     margin-bottom: 24px;
+    line-height: 1.2;
+
+    @media (max-width: 1024px) {
+      font-size: 34px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
   }
 
   p {
     color: #666;
     margin-bottom: 32px;
     max-width: 420px;
+
+    @media (max-width: 1024px) {
+       max-width: 360px;
+    }
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   .buttons {
     display: flex;
     gap: 16px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  button {
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      max-width: 320px;
+    }
   }
 
   .menu {
     background: #111;
     color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
   }
 
   .book {
     background: #f97316;
     color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
   }
 
-  /* Tablet */
-  @media (max-width: 1024px) {
-    h2 {
-      font-size: 34px;
-    }
-
-    p {
-      max-width: 100%;
-    }
-  }
-
-  /* Mobile */
   @media (max-width: 768px) {
     text-align: center;
-
-    h2 {
-      font-size: 28px;
-    }
-
-    .buttons {
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    button {
-      width: 100%;
-    }
   }
 `;
 
+
 const Container = styled.div`
-     max-width: 1280px;
-    margin: 0 auto;
-    padding: 120px 24px;
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center;
-    
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  justify-items: center;
+
   /* Tablet */
   @media (max-width: 1024px) {
     gap: 40px;

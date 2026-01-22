@@ -6,13 +6,29 @@ const Section = styled.section`
   margin: 0 auto;
   padding: 120px 24px;
   text-align: center;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 72px 20px;
+  }
 `;
+
 
 const Cards = styled.div`
   margin-top: 60px;
   display: flex;
   gap: 32px;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
 `;
 
 const Card = styled.div`
@@ -20,12 +36,14 @@ const Card = styled.div`
   padding: 32px;
   border-radius: 16px;
   max-width: 320px;
+  width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 
   p {
     font-size: 14px;
     color: #666;
     margin: 24px 0;
+    line-height: 1.6;
   }
 
   strong {

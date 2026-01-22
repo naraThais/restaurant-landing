@@ -2,18 +2,15 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 const Section = styled.section`
-     max-width: 1280px;
-    margin: 0 auto;
-    padding: 120px 24px;
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  justify-items: center;
+  position: relative;
 
   &::before {
     content: "";
@@ -26,23 +23,54 @@ const Section = styled.section`
     background-repeat: no-repeat;
     background-size: contain;
     pointer-events: none;
-    
+
     @media (max-width: 1248px) {
       left: -40px;
     }
+
+    /* Mobile: remove decoração */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    gap: 48px;
+    padding: 100px 24px;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 80px 20px;
+    text-align: center;
   }
 `;
+
 
 const Left = styled.div`
   h2 {
     font-size: 42px;
     margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
   }
 
   p {
     color: #666;
     margin-bottom: 32px;
     max-width: 420px;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+
+    @media (max-width: 1279px) {
+       max-width: 360px;
+    }
   }
 
   .info-list {
@@ -50,12 +78,19 @@ const Left = styled.div`
     flex-direction: column;
     gap: 16px;
     margin-bottom: 32px;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      align-items: center;
+      
+    }
   }
 
   .info-item {
     display: flex;
     align-items: center;
     gap: 12px;
+    text-align: left;
   }
 
   .check-icon {
@@ -79,37 +114,58 @@ const Left = styled.div`
   .buttons {
     display: flex;
     gap: 16px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  button {
+    padding: 14px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: fit-content;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   .menu {
     background: #111;
     color: #fff;
     border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
-    cursor: pointer;
   }
 
   .book {
     background: #f97316;
     color: #fff;
     border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
-    cursor: pointer;
   }
 `;
+
 
 const Right = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    order: -1; /* imagem sobe no mobile */
+  }
 `;
 
 const ChefImage = styled(Image)`
-  position: relative;
-  z-index: 1;
+  width: 100%;
+  max-width: 507px;
+  height: auto;
+
+  @media (max-width: 768px) {
+    max-width: 320px;
+  }
 `;
+
 
 export default function Chef() {
   return (

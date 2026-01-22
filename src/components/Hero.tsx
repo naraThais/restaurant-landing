@@ -2,17 +2,15 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 const Section = styled.section`
- max-width: 1280px;
-    margin: 0 auto;
-    padding: 80px 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 60px;
-    justify-items: center;
-    justify-content: center;
-    align-content: center;
- 
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  justify-items: center;
+  position: relative;
 
   &::before {
     content: "";
@@ -26,49 +24,120 @@ const Section = styled.section`
     background-size: contain;
     opacity: 0.5;
     pointer-events: none;
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      width: 520px;
+      height: 520px;
+      top: -80px;
+      left: -140px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    gap: 48px;
+    padding: 72px 24px;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 64px 20px;
   }
 `;
+
 
 const Left = styled.div`
   display: flex;
   gap: 24px;
   flex-direction: column;
+
   h1 {
     font-size: 56px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+
+    @media (max-width: 1024px) {
+      font-size: 44px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 34px;
+    }
   }
 
   p {
     color: #666;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     max-width: 420px;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+
+  span {
+    display: inline-flex;
+    justify-content: center;
+
+    img {
+      @media (max-width: 768px) {
+        width: 72px;
+        height: 72px;
+      }
+    }
   }
 
   .buttons {
     display: flex;
     gap: 16px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  button {
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   .menu {
     background: #111;
     color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
   }
 
   .book {
     background: #f97316;
     color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
   }
 `;
 
+
 const Right = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    order: -1; /* imagem sobe no mobile */
+  }
 `;
+
 
 export default function Hero() {
   return (
@@ -85,7 +154,17 @@ export default function Hero() {
       </Left>
 
       <Right>
-        <Image src="/hero.png" alt="Restaurant" width={800} height={700} />
+        <Image
+          src="/hero.png"
+          alt="Restaurant"
+          width={800}
+          height={700}
+          style={{
+            width: '100%',
+            maxWidth: '520px',
+            height: 'auto',
+          }}
+        />
       </Right>
     </Section>
   );
